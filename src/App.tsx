@@ -1,7 +1,17 @@
-export default function App() {
+import { AppSidebar } from "./components/appSidebar";
+import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
+
+export default function App({ children }: { children: React.ReactNode }) {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <SidebarProvider>
+      <AppSidebar />
+      <main className="w-full">
+        <header className="flex items-center gap-2 p-2 font-bold text-lg shadow">
+          <SidebarTrigger />
+          <h2>Movie's Catalogue Project</h2>
+        </header>
+        {children}
+      </main>
+    </SidebarProvider>
+  );
 }
