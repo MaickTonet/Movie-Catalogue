@@ -44,7 +44,7 @@ export function AppSidebar() {
             <SidebarGroupContent className="flex flex-col gap-12">
               <SidebarMenu>
                 <SidebarMenuItem className="flex items-center justify-center">
-                  <button className="flex items-center gap-3 bg-secondary p-2 rounded-2xl font-semibold shadow-md text-lg transition-colors hover:bg-secondary/80">
+                  <button className="flex items-center gap-3 bg-secondary p-2 rounded-2xl font-semibold shadow-md text-lg transition-colors hover:bg-secondary/60">
                     <Search />
                     Buscar Filme
                   </button>
@@ -53,7 +53,7 @@ export function AppSidebar() {
               <SidebarMenu className="pl-[10%] gap-4">
                 <SidebarMenuItem className="flex items-center justify-center">
                   <SidebarMenuButton asChild>
-                    <a href="/" className="flex items-center  text-xl">
+                    <a href="/" className="flex items-center text-xl ">
                       <Star /> Filmes Premiados
                     </a>
                   </SidebarMenuButton>
