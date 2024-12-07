@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { getTrendingMovies } from "../lib/queries";
-import { PopularMoviesResponse } from "../types/movieTypes";
+import { MoviesResponse } from "../types/movieTypes";
 
 export const useMovieQueries = () => {
-  const trendingMoviesQuery = useQuery<PopularMoviesResponse>({
+  const trendingMoviesQuery = useQuery<MoviesResponse>({
     queryKey: ["trendingMovies"],
     queryFn: getTrendingMovies,
     staleTime: 1000 * 60 * 15,

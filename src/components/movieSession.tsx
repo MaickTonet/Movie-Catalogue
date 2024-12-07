@@ -1,4 +1,3 @@
-import { useMovieQueries } from "@/hooks/useMovieQuery";
 import {
   Carousel,
   CarouselContent,
@@ -7,9 +6,16 @@ import {
   CarouselNext,
 } from "./ui/carousel";
 import { Skeleton } from "./ui/skeleton";
+import { useMoviesByGenreQuery } from "@/hooks/useMovieByGenreQuery";
 
-export default function MovieSession() {
-  const { trendingMovies, isLoading } = useMovieQueries();
+interface MovieSessionProps {
+  genreId: number;
+  genreName: string;
+}
+
+export default function MovieSession(props: MovieSessionProps) {
+  const { genreId, genreName } = props;
+  const { movies, isLoading } = useMoviesByGenreQuery(genreId);
 
   if (isLoading) {
     return (
@@ -33,8 +39,9 @@ export default function MovieSession() {
 
   return (
     <section className="flex flex-col gap-4 w-[90%]">
-      <div>
-        <h2 className="text-2xl font-bold">Novos filmes</h2>
+      <div className="flex justify-between items-center">
+        <h2 className="text-2xl font-bold">{genreName}</h2>
+        <p className="text-zinc-400 hover:underline cursor-pointer">Ver mais</p>
       </div>
       <Carousel
         opts={{
@@ -44,7 +51,7 @@ export default function MovieSession() {
         }}
       >
         <CarouselContent>
-          {trendingMovies.map((movie) => (
+          {movies?.map((movie) => (
             <CarouselItem
               key={movie.id}
               className="basis-1/2 max-w-[200px]  sm:basis-1/4 md:basis-1/5 lg:basis-1/6"
@@ -57,8 +64,8 @@ export default function MovieSession() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="hidden lg:flex" />
-        <CarouselNext className="hidden lg:flex" />
+        <CarouselPrevious className="hidden lg:flex outline-none border-zinc-400 hover:text-white" />
+        <CarouselNext className="hidden lg:flex outline-none border-zinc-400 hover:text-white" />
       </Carousel>
     </section>
   );

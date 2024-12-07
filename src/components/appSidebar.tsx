@@ -39,7 +39,7 @@ export function AppSidebar() {
         />
       </SidebarHeader>
       <SidebarContent className="mt-10">
-        <ScrollArea className="">
+        <ScrollArea className="scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thin" >
           <SidebarGroup>
             <SidebarGroupContent className="flex flex-col gap-12">
               <SidebarMenu>
@@ -50,7 +50,7 @@ export function AppSidebar() {
                   </button>
                 </SidebarMenuItem>
               </SidebarMenu>
-              <SidebarMenu className="pl-[10%] gap-4">
+              <SidebarMenu className="px-[5%] gap-4">
                 <SidebarMenuItem className="flex items-center justify-center">
                   <SidebarMenuButton asChild>
                     <a href="/" className="flex items-center text-xl ">
@@ -91,7 +91,7 @@ export function AppSidebar() {
                           {movieGenres.map((genre) => (
                             <SidebarMenuItem
                               key={genre.id}
-                              className="flex items-center justify-center pl-[10%]"
+                              className="flex items-center justify-center px-[5%]"
                             >
                               <SidebarMenuButton asChild>
                                 <button>{genre.name}</button>

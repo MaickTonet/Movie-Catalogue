@@ -1,9 +1,11 @@
-import MovieSession from "@/components/movieSession";
+import MovieCorridorList from "@/components/movieCorridorList";
+import TrendingMovies from "@/components/trendingMovies";
 
 export default function Home() {
   return (
-    <main className="w-full p-2 flex flex-col gap-12 items-center">
-      <MovieSession />
+    <main className="w-full flex flex-col space-y-8 py-4">
+      <TrendingMovies />
+      <MovieCorridorList />
     </main>
   );
 }
