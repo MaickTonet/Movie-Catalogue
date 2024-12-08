@@ -8,7 +8,6 @@ export const useGenreQuery = (genreId?: number) => {
     queryKey: ["movieGenresList"],
     queryFn: async () => {
       const response = await api.get("/genre/movie/list");
-      console.log(response.data);
       return response.data;
     },
     staleTime: Infinity,

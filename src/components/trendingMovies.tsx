@@ -6,9 +6,10 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "./ui/carousel";
-import { Button } from "./ui/button";
-import { Play } from "lucide-react";
 import { Skeleton } from "./ui/skeleton";
+import { Play } from "lucide-react";
+import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 // TODO: Ajust first carousel item width
 export default function TrendingMovies() {
@@ -53,11 +54,15 @@ export default function TrendingMovies() {
                   )}
                 </p>
                 <div className="hidden text-zinc-300 lg:flex h-[200px] rounded-md pt-1">
-                  <p className="size-48 text-wrap truncate">{movie.overview}</p>
+                  <p className="size-48 text-wrap truncate select-none">
+                    {movie.overview}
+                  </p>
                 </div>
-                <Button className="mt-3 flex gap-2 items-center justify-center font-semibold text-md lg:mt-auto">
-                  <Play /> Ver mais
-                </Button>
+                <Link to={`/movie/${movie.id}`} className="mt-3 lg:mt-auto">
+                  <Button className=" flex gap-2 items-center justify-center font-semibold text-md ">
+                    <Play /> Ver mais
+                  </Button>
+                </Link>
               </div>
             </CarouselItem>
           ))}

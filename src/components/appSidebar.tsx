@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { ScrollArea } from "./ui/scroll-area";
 import { useGenreQuery } from "@/hooks/useGenreQuery";
+import { Link } from "react-router-dom";
 
 export function AppSidebar() {
   const { genres: movieGenres } = useGenreQuery();
@@ -32,11 +33,14 @@ export function AppSidebar() {
   return (
     <Sidebar className="border-r-white/20 shadow">
       <SidebarHeader>
-        <img
-          src="public/logo-ipsum.svg"
-          alt="Logo demonstrativa do projeto"
-          draggable={false}
-        />
+        <Link to={"/"}>
+          <img
+            src="public/logo-ipsum.svg"
+            alt="Logo demonstrativa do projeto"
+            draggable={false}
+            className="w-full mt-6"
+          />
+        </Link>
       </SidebarHeader>
       <SidebarContent className="mt-10">
         <ScrollArea className="scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thin">
