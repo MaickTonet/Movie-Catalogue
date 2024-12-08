@@ -17,7 +17,9 @@ export default function BreadcrumbPath({ movie }: { movie: Movie }) {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage>{movie.title}</BreadcrumbPage>
+          <BreadcrumbPage className="max-w-28 sm:max-w-sm truncate">
+            {movie.title}
+          </BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
