@@ -1,3 +1,4 @@
+import { useGenreQuery } from "@/hooks/useGenreQuery";
 import {
   Carousel,
   CarouselContent,
@@ -6,7 +7,6 @@ import {
   CarouselNext,
 } from "./ui/carousel";
 import { Skeleton } from "./ui/skeleton";
-import { useMoviesByGenreQuery } from "@/hooks/useMovieByGenreQuery";
 
 interface MovieSessionProps {
   genreId: number;
@@ -15,7 +15,7 @@ interface MovieSessionProps {
 
 export default function MovieSession(props: MovieSessionProps) {
   const { genreId, genreName } = props;
-  const { movies, isLoading } = useMoviesByGenreQuery(genreId);
+  const { moviesByGenre, isLoading } = useGenreQuery(genreId);
 
   if (isLoading) {
     return (
@@ -51,7 +51,7 @@ export default function MovieSession(props: MovieSessionProps) {
         }}
       >
         <CarouselContent>
-          {movies?.map((movie) => (
+          {moviesByGenre?.map((movie) => (
             <CarouselItem
               key={movie.id}
               className="basis-1/2 max-w-[200px]  sm:basis-1/4 md:basis-1/5 lg:basis-1/6"
