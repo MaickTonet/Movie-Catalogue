@@ -59,7 +59,7 @@ export default function MovieSession(props: MovieSessionProps) {
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
-                className="w-full h-full object-cover rounded-md shadow-lg"
+                className="w-full h-full object-cover rounded-md shadow-lg cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
               />
             </CarouselItem>
           ))}

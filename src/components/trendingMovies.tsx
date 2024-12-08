@@ -8,15 +8,28 @@ import {
 } from "./ui/carousel";
 import { Button } from "./ui/button";
 import { Play } from "lucide-react";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { Skeleton } from "./ui/skeleton";
 
-// TODO: Ajust width, ScrollArea, and add genres badges
+// TODO: Ajust first carousel item width
 export default function TrendingMovies() {
-  const { trendingMovies } = useMovieQueries();
+  const { trendingMovies, isLoading } = useMovieQueries();
+
+  if (isLoading) {
+    return (
+      <article className="lg:max-w-screen-lg lg:mx-auto flex flex-col gap-3 mx-auto lg:flex-row ">
+        <Skeleton className="h-[300px] w-[200px] rounded-md  bg-zinc-600" />
+        <div className="flex flex-col gap-2 items-center lg:my-auto lg:items-start">
+          <Skeleton className="h-4 w-[200px] rounded-md bg-zinc-600" />
+          <Skeleton className="h-4 w-[150px] rounded-md bg-zinc-600" />
+          <Skeleton className="hidden lg:block h-[40px] w-[200px] rounded-md bg-zinc-600 mt-auto" />
+        </div>
+      </article>
+    );
+  }
 
   return (
-    <article className="">
-      <Carousel className="">
+    <article className="lg:max-w-screen-md lg:mx-auto">
+      <Carousel>
         <CarouselContent>
           {trendingMovies.map((movie) => (
             <CarouselItem
@@ -39,9 +52,9 @@ export default function TrendingMovies() {
                     new Date(movie.release_date)
                   )}
                 </p>
-                <ScrollArea className="hidden text-zinc-300 lg:block h-[200px] w-[350px] rounded-md p-4 overflow-auto break-words">
-                  {movie.overview}
-                </ScrollArea>
+                <div className="hidden text-zinc-300 lg:flex h-[200px] rounded-md pt-1">
+                  <p className="size-48 text-wrap truncate">{movie.overview}</p>
+                </div>
                 <Button className="mt-3 flex gap-2 items-center justify-center font-semibold text-md lg:mt-auto">
                   <Play /> Ver mais
                 </Button>
@@ -49,8 +62,8 @@ export default function TrendingMovies() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="hidden lg:flex outline-none border-zinc-400 hover:text-white" />
-        <CarouselNext className="hidden lg:flex outline-none border-zinc-400 hover:text-white" />
+        <CarouselPrevious className="hidden xl:flex left-0  outline-none border-zinc-400 hover:text-white" />
+        <CarouselNext className="hidden xl:flex right-0   outline-none border-zinc-400 hover:text-white" />
       </Carousel>
     </article>
   );

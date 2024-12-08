@@ -39,12 +39,12 @@ export function AppSidebar() {
         />
       </SidebarHeader>
       <SidebarContent className="mt-10">
-        <ScrollArea className="scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thin" >
+        <ScrollArea className="scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-thin">
           <SidebarGroup>
             <SidebarGroupContent className="flex flex-col gap-12">
               <SidebarMenu>
                 <SidebarMenuItem className="flex items-center justify-center">
-                  <button className="flex items-center gap-3 bg-secondary p-2 rounded-2xl font-semibold shadow-md text-lg transition-colors hover:bg-secondary/60">
+                  <button className="flex items-center gap-3 bg-secondary p-2 w-[80%] rounded-2xl font-semibold shadow-md text-lg transition-colors hover:bg-secondary/60">
                     <Search />
                     Buscar Filme
                   </button>
