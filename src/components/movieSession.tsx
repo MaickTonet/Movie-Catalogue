@@ -7,15 +7,17 @@ import {
   CarouselNext,
 } from "./ui/carousel";
 import { Skeleton } from "./ui/skeleton";
+import { Badge } from "./ui/badge";
 
 interface MovieSessionProps {
   genreId: number;
   genreName: string;
+  type: "movies" | "series";
 }
 
 export default function MovieSession(props: MovieSessionProps) {
-  const { genreId, genreName } = props;
-  const { moviesByGenre, isLoading } = useGenreQuery(genreId);
+  const { genreId, genreName, type } = props;
+  const { moviesByGenre, seriesByGenre, isLoading } = useGenreQuery(genreId);
 
   if (isLoading) {
     return (
@@ -40,7 +42,12 @@ export default function MovieSession(props: MovieSessionProps) {
   return (
     <section className="flex flex-col gap-4 w-[90%]">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">{genreName}</h2>
+        <div className="flex space-x-3 items-center">
+          <h2 className="text-2xl font-bold">{genreName}</h2>
+          <Badge className="hidden sm:flex mt-1" variant={"secondary"}>
+            {type === "movies" ? "Filmes" : "Series"}
+          </Badge>
+        </div>
         <p className="text-zinc-400 hover:underline cursor-pointer">Ver mais</p>
       </div>
       <Carousel
@@ -51,18 +58,33 @@ export default function MovieSession(props: MovieSessionProps) {
         }}
       >
         <CarouselContent>
-          {moviesByGenre?.map((movie) => (
-            <CarouselItem
-              key={movie.id}
-              className="basis-1/2 max-w-[200px]  sm:basis-1/4 md:basis-1/5 lg:basis-1/6"
-            >
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                className="w-full h-full object-cover rounded-md shadow-lg cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
-              />
-            </CarouselItem>
-          ))}
+          {type === "movies" &&
+            moviesByGenre?.map((movie) => (
+              <CarouselItem
+                key={movie.id}
+                className="basis-1/2 max-w-[200px]  sm:basis-1/4 md:basis-1/5 lg:basis-1/6"
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                  className="w-full h-full object-cover rounded-md shadow-lg cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
+                />
+              </CarouselItem>
+            ))}
+
+          {type === "series" &&
+            seriesByGenre?.map((serie) => (
+              <CarouselItem
+                key={serie.id}
+                className="basis-1/2 max-w-[200px]  sm:basis-1/4 md:basis-1/5 lg:basis-1/6"
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`}
+                  alt={serie.title}
+                  className="w-full h-full object-cover rounded-md shadow-lg cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
+                />
+              </CarouselItem>
+            ))}
         </CarouselContent>
         <CarouselPrevious className="hidden lg:flex outline-none border-zinc-400 hover:text-white" />
         <CarouselNext className="hidden lg:flex outline-none border-zinc-400 hover:text-white" />

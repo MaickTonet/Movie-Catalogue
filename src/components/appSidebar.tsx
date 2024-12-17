@@ -28,7 +28,8 @@ import { useGenreQuery } from "@/hooks/useGenreQuery";
 import { Link } from "react-router-dom";
 
 export function AppSidebar() {
-  const { genres: movieGenres } = useGenreQuery();
+  const { movieGenres } = useGenreQuery();
+  const { seriesGenres } = useGenreQuery();
 
   return (
     <Sidebar className="border-r-white/20 shadow">
@@ -84,19 +85,42 @@ export function AppSidebar() {
                       <CollapsibleTrigger>
                         <p className="flex gap-2 text-lg font-medium">
                           <ChartBarStacked />
-                          Categorias
+                          Filmes
                         </p>
                         <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
                       </CollapsibleTrigger>
                     </SidebarGroupLabel>
                     <CollapsibleContent>
                       <SidebarGroupContent className="mt-2">
-                        <SidebarMenu>
+                        <SidebarMenu className="flex px-[10%]">
                           {movieGenres.map((genre) => (
-                            <SidebarMenuItem
-                              key={genre.id}
-                              className="flex items-center justify-center px-[5%]"
-                            >
+                            <SidebarMenuItem key={genre.id}>
+                              <SidebarMenuButton asChild>
+                                <button>{genre.name}</button>
+                              </SidebarMenuButton>
+                            </SidebarMenuItem>
+                          ))}
+                        </SidebarMenu>
+                      </SidebarGroupContent>
+                    </CollapsibleContent>
+                  </SidebarGroup>
+                </Collapsible>
+                <Collapsible defaultOpen className="group/collapsible">
+                  <SidebarGroup>
+                    <SidebarGroupLabel asChild>
+                      <CollapsibleTrigger>
+                        <p className="flex gap-2 text-lg font-medium">
+                          <ChartBarStacked />
+                          Séries
+                        </p>
+                        <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                      </CollapsibleTrigger>
+                    </SidebarGroupLabel>
+                    <CollapsibleContent>
+                      <SidebarGroupContent className="mt-2">
+                        <SidebarMenu className="flex px-[10%]">
+                          {seriesGenres.map((genre) => (
+                            <SidebarMenuItem key={genre.id}>
                               <SidebarMenuButton asChild>
                                 <button>{genre.name}</button>
                               </SidebarMenuButton>
