@@ -8,8 +8,6 @@ export default function MovieView() {
 
   const { movie } = useMovieQueries(parseInt(id!));
 
-  // TODO: ajust width
-
   return (
     <main className="px-4">
       <nav className="w-full p-4 mb-3">

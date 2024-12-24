@@ -3,6 +3,8 @@ import { ModeToggle } from "./components/mode-toggle";
 import { ThemeProvider } from "./components/theme-provider";
 import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
 
+// TODO: ajust light theme colors
+
 export default function App({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">

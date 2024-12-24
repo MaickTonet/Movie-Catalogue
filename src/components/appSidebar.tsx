@@ -30,13 +30,19 @@ import { Link } from "react-router-dom";
 export function AppSidebar() {
   const { movieGenres } = useGenreQuery();
   const { seriesGenres } = useGenreQuery();
+  // TODO: Ajust to switch image dinamically
+  const currentTheme = localStorage.getItem("vite-ui-theme");
 
   return (
     <Sidebar className="border-r-border/40 shadow-md">
       <SidebarHeader>
         <Link to={"/"}>
           <img
-            src="public/logo-ipsum.svg"
+            src={
+              currentTheme === "dark"
+                ? "public/logo-ipsum-dark.svg"
+                : "public/logo-ipsum.svg"
+            }
             alt="Logo demonstrativa do projeto"
             draggable={false}
             className="w-full mt-6"
