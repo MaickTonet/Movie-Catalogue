@@ -22,7 +22,7 @@ export default function MovieSession(props: MovieSessionProps) {
   if (isLoading) {
     return (
       <section className="flex flex-col gap-4 w-[90%]">
-        <Skeleton className="h-4 w-[250px] bg-zinc-600" />
+        <Skeleton className="h-4 w-[250px]" />
         <Carousel>
           <CarouselContent>
             {Array.from({ length: 5 }).map((_, index) => (
@@ -30,7 +30,7 @@ export default function MovieSession(props: MovieSessionProps) {
                 key={index}
                 className="basis max-w-[200px] sm:basis-1/3 md:basis-1/4"
               >
-                <Skeleton className="h-[250px] w-[170px] bg-zinc-600" />
+                <Skeleton className="h-[250px] w-[170px]" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -48,7 +48,9 @@ export default function MovieSession(props: MovieSessionProps) {
             {type === "movies" ? "Filmes" : "Series"}
           </Badge>
         </div>
-        <p className="text-zinc-400 hover:underline cursor-pointer">Ver mais</p>
+        <p className="text-muted-foreground hover:underline cursor-pointer">
+          Ver mais
+        </p>
       </div>
       <Carousel
         opts={{
@@ -86,8 +88,8 @@ export default function MovieSession(props: MovieSessionProps) {
               </CarouselItem>
             ))}
         </CarouselContent>
-        <CarouselPrevious className="hidden lg:flex outline-none border-zinc-400 hover:text-white" />
-        <CarouselNext className="hidden lg:flex outline-none border-zinc-400 hover:text-white" />
+        <CarouselPrevious className="hidden lg:flex outline-none border-border" />
+        <CarouselNext className="hidden lg:flex outline-none border-border" />
       </Carousel>
     </section>
   );

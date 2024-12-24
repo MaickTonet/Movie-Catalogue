@@ -18,11 +18,11 @@ export default function TrendingMovies() {
   if (isLoading) {
     return (
       <article className="lg:max-w-screen-lg lg:mx-auto flex flex-col gap-3 mx-auto lg:flex-row ">
-        <Skeleton className="h-[300px] w-[200px] rounded-md  bg-zinc-600" />
+        <Skeleton className="h-[300px] w-[200px] rounded-md" />
         <div className="flex flex-col gap-2 items-center lg:my-auto lg:items-start">
-          <Skeleton className="h-4 w-[200px] rounded-md bg-zinc-600" />
-          <Skeleton className="h-4 w-[150px] rounded-md bg-zinc-600" />
-          <Skeleton className="hidden lg:block h-[40px] w-[200px] rounded-md bg-zinc-600 mt-auto" />
+          <Skeleton className="h-4 w-[200px] rounded-md" />
+          <Skeleton className="h-4 w-[150px] rounded-md" />
+          <Skeleton className="hidden lg:block h-[40px] w-[200px] rounded-md mt-auto" />
         </div>
       </article>
     );
@@ -48,12 +48,12 @@ export default function TrendingMovies() {
                 <h2 className="font-bold text-xl text-center truncate w-full lg:text-left lg:text-2xl">
                   {movie.title}
                 </h2>
-                <p className="text-semibold text-lg text-zinc-500">
+                <p className="text-semibold text-lg text-muted-foreground">
                   {new Intl.DateTimeFormat("pt-BR", { year: "numeric" }).format(
                     new Date(movie.release_date)
                   )}
                 </p>
-                <div className="hidden text-zinc-300 lg:flex h-[200px] rounded-md pt-1">
+                <div className="hidden lg:flex h-[200px] rounded-md pt-1">
                   <p className="size-48 text-wrap truncate select-none">
                     {movie.overview}
                   </p>
@@ -67,8 +67,8 @@ export default function TrendingMovies() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="hidden xl:flex left-0  outline-none border-zinc-400 hover:text-white" />
-        <CarouselNext className="hidden xl:flex right-0   outline-none border-zinc-400 hover:text-white" />
+        <CarouselPrevious className="hidden xl:flex left-0 border-border" />
+        <CarouselNext className="hidden xl:flex right-0 border-border" />
       </Carousel>
     </article>
   );

@@ -1,8 +1,11 @@
 import { Movie } from "@/types/movieTypes";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./ui/accordion";
 import { Badge } from "./ui/badge";
-
-
 
 export default function AccordionList({ movie }: { movie: Movie }) {
   return (
@@ -10,7 +13,7 @@ export default function AccordionList({ movie }: { movie: Movie }) {
       <AccordionItem value="item-1" className="border-zinc-600">
         <AccordionTrigger>Sinopse</AccordionTrigger>
         <AccordionContent>
-          <p className="text-zinc-400">{movie.overview}</p>
+          <p>{movie.overview}</p>
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2" className="border-zinc-600">

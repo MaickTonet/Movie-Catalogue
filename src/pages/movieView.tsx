@@ -26,7 +26,7 @@ export default function MovieView() {
             <h2 className="font-bold text-xl text-center truncate w-full md:text-start md:text-3xl md:text-wrap">
               {movie.title}
             </h2>
-            <p className="text-semibold text-lg text-zinc-500">
+            <p className="text-semibold text-lg text-muted-foreground">
               {new Intl.DateTimeFormat("pt-BR", { year: "numeric" }).format(
                 new Date(movie.release_date)
               )}
