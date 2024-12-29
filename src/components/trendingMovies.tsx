@@ -11,7 +11,7 @@ import { Play } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 
-// TODO: Ajust first carousel item width
+// TODO: Ajust carousel itens width
 export default function TrendingMovies() {
   const { trendingMovies, isLoading } = useMovieQueries();
 
