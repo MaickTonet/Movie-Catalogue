@@ -26,12 +26,12 @@ import {
 import { ScrollArea } from "./ui/scroll-area";
 import { useGenreQuery } from "@/hooks/useGenreQuery";
 import { Link } from "react-router-dom";
+import { useTheme } from "./theme-provider";
 
 export function AppSidebar() {
+  const { theme } = useTheme();
   const { movieGenres } = useGenreQuery();
   const { seriesGenres } = useGenreQuery();
-  // TODO: Ajust to switch image dinamically
-  const currentTheme = localStorage.getItem("vite-ui-theme");
 
   return (
     <Sidebar className="border-r-border/40 shadow-md">
@@ -39,7 +39,7 @@ export function AppSidebar() {
         <Link to={"/"}>
           <img
             src={
-              currentTheme === "dark"
+              theme === "dark"
                 ? "public/logo-ipsum-dark.svg"
                 : "public/logo-ipsum.svg"
             }
