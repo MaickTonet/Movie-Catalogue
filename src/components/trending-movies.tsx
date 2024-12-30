@@ -1,15 +1,15 @@
-import { useMovieQueries } from "@/hooks/useMovieQuery";
+import { useMovieQueries } from "@/hooks/use-movie-query";
+import { Play } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "./ui/button";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
   CarouselNext,
+  CarouselPrevious,
 } from "./ui/carousel";
 import { Skeleton } from "./ui/skeleton";
-import { Play } from "lucide-react";
-import { Button } from "./ui/button";
-import { Link } from "react-router-dom";
 
 // TODO: Ajust carousel itens width
 export default function TrendingMovies() {
@@ -59,7 +59,7 @@ export default function TrendingMovies() {
                   </p>
                 </div>
                 <Link to={`/movie/${movie.id}`} className="mt-3 lg:mt-auto">
-                  <Button className=" flex gap-2 items-center justify-center font-semibold text-md ">
+                  <Button className="flex gap-2 items-center justify-center font-semibold text-md">
                     <Play /> Ver mais
                   </Button>
                 </Link>

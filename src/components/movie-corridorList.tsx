@@ -1,5 +1,5 @@
-import { useGenreQuery } from "@/hooks/useGenreQuery";
-import MovieSession from "./movieSession";
+import { useGenreQuery } from "@/hooks/use-genre-query";
+import MovieSession from "./movie-session";
 
 export default function MovieCorridorList({
   numberOfCategories,

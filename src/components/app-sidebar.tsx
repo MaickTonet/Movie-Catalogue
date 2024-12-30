@@ -10,10 +10,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { useGenreQuery } from "@/hooks/use-genre-query";
 import {
   Collapsible,
-  CollapsibleTrigger,
   CollapsibleContent,
+  CollapsibleTrigger,
 } from "@radix-ui/react-collapsible";
 import {
   ChartBarStacked,
@@ -23,10 +24,9 @@ import {
   Star,
   Tv,
 } from "lucide-react";
-import { ScrollArea } from "./ui/scroll-area";
-import { useGenreQuery } from "@/hooks/useGenreQuery";
 import { Link } from "react-router-dom";
 import { useTheme } from "./theme-provider";
+import { ScrollArea } from "./ui/scroll-area";
 
 export function AppSidebar() {
   const { theme } = useTheme();
@@ -64,7 +64,7 @@ export function AppSidebar() {
               <SidebarMenu className="px-[5%] gap-4">
                 <SidebarMenuItem className="flex items-center justify-center">
                   <SidebarMenuButton asChild>
-                    <a href="/" className="flex items-center text-xl ">
+                    <a href="/" className="flex items-center text-xl">
                       <Star /> Filmes Premiados
                     </a>
                   </SidebarMenuButton>

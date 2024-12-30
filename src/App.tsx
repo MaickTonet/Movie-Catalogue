@@ -1,4 +1,4 @@
-import { AppSidebar } from "./components/appSidebar";
+import { AppSidebar } from "./components/app-sidebar";
 import { ModeToggle } from "./components/mode-toggle";
 import { ThemeProvider } from "./components/theme-provider";
 import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";

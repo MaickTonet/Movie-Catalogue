@@ -1,5 +1,5 @@
-import MovieCorridorList from "@/components/movieCorridorList";
-import TrendingMovies from "@/components/trendingMovies";
+import MovieCorridorList from "@/components/movie-corridorList";
+import TrendingMovies from "@/components/trending-movies";
 
 export default function Home() {
   return (

@@ -1,13 +1,14 @@
-import { useGenreQuery } from "@/hooks/useGenreQuery";
+import { useGenreQuery } from "@/hooks/use-genre-query";
+import { Link } from "react-router-dom";
+import { Badge } from "./ui/badge";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
   CarouselNext,
+  CarouselPrevious,
 } from "./ui/carousel";
 import { Skeleton } from "./ui/skeleton";
-import { Badge } from "./ui/badge";
 
 interface MovieSessionProps {
   genreId: number;
@@ -66,11 +67,13 @@ export default function MovieSession(props: MovieSessionProps) {
                 key={movie.id}
                 className="basis-1/2 max-w-[200px]  sm:basis-1/4 md:basis-1/5 lg:basis-1/6"
               >
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                  className="w-full h-full object-cover rounded-md shadow-lg cursor-pointer hover:scale-95 transition-all duration-300 ease-in-out"
-                />
+                <Link to={`/movie/${movie.id}`}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt={movie.title}
+                    className="w-full h-full object-cover rounded-md shadow-lg cursor-pointer hover:scale-95 transition-all duration-300 ease-in-out"
+                  />
+                </Link>
               </CarouselItem>
             ))}
 
