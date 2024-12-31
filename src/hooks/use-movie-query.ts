@@ -1,6 +1,8 @@
+import { api } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import { Movie, MoviesResponse } from "../types/movieTypes";
-import { api } from "@/lib/api";
+
+// TODO: refactor hooks
 
 export const useMovieQueries = (movieId?: number) => {
   const movieQuery = useQuery<Movie, Error>({

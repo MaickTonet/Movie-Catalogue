@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { GenresResponse } from "../types/genreTypes";
 import { api } from "@/lib/api";
 import { MoviesResponse } from "@/types/movieTypes";
+import { useQuery } from "@tanstack/react-query";
+import { GenresResponse } from "../types/genreTypes";
 
 export const useGenreQuery = (genreId?: number) => {
   const movieGenreQuery = useQuery<GenresResponse>({
@@ -40,8 +40,6 @@ export const useGenreQuery = (genreId?: number) => {
       const response = await api.get<MoviesResponse>(
         `/discover/tv?with_genres=${genreId}`
       );
-      console.log(response.data);
-      
       return response.data;
     },
     staleTime: 1000 * 60 * 15,

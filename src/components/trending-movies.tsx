@@ -1,3 +1,4 @@
+import { formatDateByYear } from "@/helpers/data-format";
 import { useMovieQueries } from "@/hooks/use-movie-query";
 import { Play } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -49,9 +50,7 @@ export default function TrendingMovies() {
                   {movie.title}
                 </h2>
                 <p className="text-semibold text-lg text-muted-foreground">
-                  {new Intl.DateTimeFormat("pt-BR", { year: "numeric" }).format(
-                    new Date(movie.release_date)
-                  )}
+                  {formatDateByYear(movie.release_date)}
                 </p>
                 <div className="hidden lg:flex h-[200px] rounded-md pt-1">
                   <p className="size-48 text-wrap truncate select-none">
