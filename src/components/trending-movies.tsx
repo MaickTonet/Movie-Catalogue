@@ -1,5 +1,5 @@
 import { formatDateByYear } from "@/helpers/data-format";
-import { useMovieQueries } from "@/hooks/use-movie-query";
+import { Movie } from "@/types/movieTypes";
 import { Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
@@ -10,25 +10,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
-import { Skeleton } from "./ui/skeleton";
 
 // TODO: Ajust carousel itens width
-export default function TrendingMovies() {
-  const { trendingMovies, isLoading } = useMovieQueries();
-
-  if (isLoading) {
-    return (
-      <article className="lg:max-w-screen-lg lg:mx-auto flex flex-col gap-3 mx-auto lg:flex-row ">
-        <Skeleton className="h-[300px] w-[200px] rounded-md" />
-        <div className="flex flex-col gap-2 items-center lg:my-auto lg:items-start">
-          <Skeleton className="h-4 w-[200px] rounded-md" />
-          <Skeleton className="h-4 w-[150px] rounded-md" />
-          <Skeleton className="hidden lg:block h-[40px] w-[200px] rounded-md mt-auto" />
-        </div>
-      </article>
-    );
-  }
-
+export default function TrendingMovies({
+  trendingMovies,
+}: {
+  trendingMovies: Movie[];
+}) {
   return (
     <article className="lg:max-w-screen-md lg:mx-auto">
       <Carousel>

@@ -1,16 +1,16 @@
 import { Movie } from "@/types/movieTypes";
 import {
   Breadcrumb,
-  BreadcrumbList,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbSeparator,
+  BreadcrumbList,
   BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "./ui/breadcrumb";
 
 export default function BreadcrumbPath({ movie }: { movie: Movie }) {
   return (
-    <Breadcrumb>
+    <Breadcrumb className={"p-4 mb-6"}>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="/" className="text-muted-foreground ">

@@ -1,9 +1,9 @@
 import { api } from "@/lib/api";
-import { MovieCredits } from "@/types/credits-types";
+import { CreditsResponse } from "@/types/credits-types";
 import { useQuery } from "@tanstack/react-query";
 
 export const useCreditsQuery = (movieId: number) => {
-  const creditsQuery = useQuery<MovieCredits>({
+  const creditsQuery = useQuery<CreditsResponse>({
     queryKey: ["movieCredits", movieId],
     queryFn: async () => {
       const response = await api.get(`/movie/${movieId}/credits`);
