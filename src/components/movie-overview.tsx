@@ -18,7 +18,7 @@ export default function MovieOverview({ movie }: { movie: Movie }) {
         <img
           src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
           alt={movie.title}
-          className={"shadow rounded w-[80%] max-w-sm object-cover"}
+          className={"shadow rounded w-[80%] max-w-sm"}
         />
       </div>
       <article className={"space-y-4 max-w-md"}>

@@ -18,14 +18,17 @@ export default function MovieCarousel({
   type: "movie" | "serie";
 }) {
   const { moviesByGenre, seriesByGenre } = useGenreQuery(genre.id);
+  const options = {
+    slidesToScroll: 4,
+    dragFree: false,
+    dragThreshold: 80,
+  };
+
   let movies: Movie[] = [];
 
-  if (type === "movie") {
-    movies = moviesByGenre;
-  }
-  if (type === "serie") {
-    movies = seriesByGenre;
-  }
+  if (type === "movie") movies = moviesByGenre;
+
+  if (type === "serie") movies = seriesByGenre;
 
   return (
     <section className="flex flex-col gap-4 w-[90%]">
@@ -37,13 +40,7 @@ export default function MovieCarousel({
           Ver mais
         </p>
       </aside>
-      <Carousel
-        opts={{
-          slidesToScroll: 4,
-          dragFree: false,
-          dragThreshold: 80,
-        }}
-      >
+      <Carousel opts={options}>
         <CarouselContent>
           {movies?.map((movie) => (
             <CarouselItem

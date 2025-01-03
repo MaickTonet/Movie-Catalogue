@@ -12,7 +12,7 @@ export default function MovieTabs({
   return (
     <article>
       <Tabs defaultValue="movie" className="space-y-6">
-        <TabsList className={"ml-[5%] bg-transparent"}>
+        <TabsList className={"ml-[5%] bg-transparent space-x-2"}>
           <TabsTrigger
             value="movie"
             className={"data-[state=active]:bg-primary"}
@@ -28,7 +28,7 @@ export default function MovieTabs({
         </TabsList>
         <TabsContent
           value="movie"
-          className={"flex flex-col justify-center items-center"}
+          className={"flex flex-col justify-center items-center space-y-12"}
         >
           {movieGenres.map((genre) => (
             <MovieCarousel key={genre.id} genre={genre} type={"movie"} />
@@ -36,7 +36,7 @@ export default function MovieTabs({
         </TabsContent>
         <TabsContent
           value="serie"
-          className={"flex flex-col justify-center items-center"}
+          className={"flex flex-col justify-center items-center space-y-12"}
         >
           {seriesGenres.map((genre) => (
             <MovieCarousel key={genre.id} genre={genre} type={"serie"} />

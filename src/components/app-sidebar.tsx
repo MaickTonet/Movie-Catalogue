@@ -34,7 +34,7 @@ export function AppSidebar() {
   const { seriesGenres } = useGenreQuery();
 
   return (
-    <Sidebar className="border-r-border/40 shadow-md">
+    <Sidebar className="border-r-border shadow-md">
       <SidebarHeader>
         <Link to={"/"}>
           <img

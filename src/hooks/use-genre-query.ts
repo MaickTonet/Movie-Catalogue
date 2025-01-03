@@ -68,3 +68,25 @@ export const useGenreQuery = (genreId?: number) => {
       seriesByGenreQuery.error,
   };
 };
+
+export const useMovieGenreList = () => {
+  return useQuery<GenresResponse>({
+    queryKey: ["movieGenresList"],
+    queryFn: async () => {
+      const response = await api.get("/genre/movie/list");
+      return response.data;
+    },
+    staleTime: Infinity,
+  });
+};
+
+export const useSeriesGenreList = () => {
+  return useQuery<GenresResponse>({
+    queryKey: ["seriesGenresList"],
+    queryFn: async () => {
+      const response = await api.get("/genre/tv/list");
+      return response.data;
+    },
+    staleTime: Infinity,
+  });
+};

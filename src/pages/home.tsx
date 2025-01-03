@@ -2,10 +2,10 @@ import Loading from "@/components/loading";
 import MovieTabs from "@/components/movie-tabs";
 import TrendingMovies from "@/components/trending-movies";
 import { useGenreQuery } from "@/hooks/use-genre-query";
-import { useMovieQueries } from "@/hooks/use-movie-query";
+import { useTrendingMovies } from "@/hooks/use-movie";
 
 export default function Home() {
-  const { trendingMovies, isLoading } = useMovieQueries();
+  const { data: trendingMovies, isLoading } = useTrendingMovies();
   const { movieGenres, seriesGenres } = useGenreQuery();
 
   if (isLoading) {
@@ -13,8 +13,8 @@ export default function Home() {
   }
 
   return (
-    <main className="w-full flex flex-col space-y-8 py-4">
-      <TrendingMovies trendingMovies={trendingMovies} />
+    <main className={"w-full flex flex-col space-y-8 py-4"}>
+      {trendingMovies && <TrendingMovies trendingMovies={trendingMovies} />}
       <MovieTabs movieGenres={movieGenres} seriesGenres={seriesGenres} />
     </main>
   );
