@@ -1,12 +1,12 @@
-import { Genre } from '@/types/genreTypes';
-import MovieCarousel from './movie-carousel';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { Genre } from '@/types/genreTypes'
+import MovieCarousel from './movie-carousel'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
 
 export default function MovieTabs({ movieGenres, seriesGenres }: { movieGenres: Genre[]; seriesGenres: Genre[] }) {
   return (
     <article>
       <Tabs defaultValue='movie' className='space-y-6'>
-        <TabsList className={'ml-[5%] bg-transparent space-x-2'}>
+        <TabsList className={'ml-[5%] space-x-2 bg-transparent'}>
           <TabsTrigger value='movie' className={'data-[state=active]:bg-primary'}>
             Filmes
           </TabsTrigger>
@@ -14,17 +14,17 @@ export default function MovieTabs({ movieGenres, seriesGenres }: { movieGenres: 
             Series
           </TabsTrigger>
         </TabsList>
-        <TabsContent value='movie' className={'flex flex-col justify-center items-center space-y-12'}>
+        <TabsContent value='movie' className={'flex flex-col items-center justify-center space-y-12'}>
           {movieGenres.map((genre) => (
             <MovieCarousel key={genre.id} genre={genre} type={'movie'} />
           ))}
         </TabsContent>
-        <TabsContent value='serie' className={'flex flex-col justify-center items-center space-y-12'}>
+        <TabsContent value='serie' className={'flex flex-col items-center justify-center space-y-12'}>
           {seriesGenres.map((genre) => (
             <MovieCarousel key={genre.id} genre={genre} type={'serie'} />
           ))}
         </TabsContent>
       </Tabs>
     </article>
-  );
+  )
 }

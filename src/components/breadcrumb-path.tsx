@@ -1,4 +1,4 @@
-import { Movie } from '@/types/movieTypes';
+import { Movie } from '@/types/movieTypes'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,11 +6,11 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from './ui/breadcrumb';
+} from './ui/breadcrumb'
 
 export default function BreadcrumbPath({ movie }: { movie: Movie }) {
   return (
-    <Breadcrumb className={'p-4 mb-6'}>
+    <Breadcrumb className={'mb-6 p-4'}>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href={'/'} className={'text-muted-foreground'}>
@@ -19,9 +19,9 @@ export default function BreadcrumbPath({ movie }: { movie: Movie }) {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage className={'max-w-28 sm:max-w-sm truncate'}>{movie.title}</BreadcrumbPage>
+          <BreadcrumbPage className={'max-w-28 truncate sm:max-w-sm'}>{movie.title}</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

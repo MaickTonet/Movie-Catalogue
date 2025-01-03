@@ -9,18 +9,18 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/components/ui/sidebar';
-import { useGenreQuery } from '@/hooks/use-genre-query';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@radix-ui/react-collapsible';
-import { ChartBarStacked, ChevronDown, Clapperboard, Search, Star, Tv } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { useTheme } from './theme-provider';
-import { ScrollArea } from './ui/scroll-area';
+} from '@/components/ui/sidebar'
+import { useGenreQuery } from '@/hooks/use-genre-query'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@radix-ui/react-collapsible'
+import { ChartBarStacked, ChevronDown, Clapperboard, Search, Star, Tv } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { useTheme } from './theme-provider'
+import { ScrollArea } from './ui/scroll-area'
 
 export function AppSidebar() {
-  const { theme } = useTheme();
-  const { movieGenres } = useGenreQuery();
-  const { seriesGenres } = useGenreQuery();
+  const { theme } = useTheme()
+  const { movieGenres } = useGenreQuery()
+  const { seriesGenres } = useGenreQuery()
 
   return (
     <Sidebar className={'border-r-border shadow-md'}>
@@ -30,7 +30,7 @@ export function AppSidebar() {
             src={theme === 'dark' ? 'public/logo-ipsum-dark.svg' : 'public/logo-ipsum.svg'}
             alt={'Logo demonstrativa do projeto'}
             draggable={false}
-            className={'w-full mt-6'}
+            className={'mt-6 w-full'}
           />
         </Link>
       </SidebarHeader>
@@ -42,14 +42,14 @@ export function AppSidebar() {
                 <SidebarMenuItem className={'flex items-center justify-center'}>
                   <button
                     className={
-                      'flex items-center gap-3 bg-secondary p-2 w-[80%] rounded-2xl font-semibold shadow-md text-lg transition-colors hover:bg-secondary/60'
+                      'flex w-[80%] items-center gap-3 rounded-2xl bg-secondary p-2 text-lg font-semibold shadow-md transition-colors hover:bg-secondary/60'
                     }>
                     <Search />
                     Buscar Filme
                   </button>
                 </SidebarMenuItem>
               </SidebarMenu>
-              <SidebarMenu className={'px-[5%] gap-4'}>
+              <SidebarMenu className={'gap-4 px-[5%]'}>
                 <SidebarMenuItem className={'flex items-center justify-center'}>
                   <SidebarMenuButton asChild>
                     <a href={'/'} className={'flex items-center text-xl'}>
@@ -59,14 +59,14 @@ export function AppSidebar() {
                 </SidebarMenuItem>
                 <SidebarMenuItem className={'flex items-center justify-center'}>
                   <SidebarMenuButton asChild>
-                    <a href={'/'} className={'flex items-center  text-xl'}>
+                    <a href={'/'} className={'flex items-center text-xl'}>
                       <Clapperboard /> Novos Filmes
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem className={'flex items-center justify-center'}>
                   <SidebarMenuButton asChild>
-                    <a href={'/'} className={'flex items-center  text-xl'}>
+                    <a href={'/'} className={'flex items-center text-xl'}>
                       <Tv /> Séries de TV
                     </a>
                   </SidebarMenuButton>
@@ -137,5 +137,5 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter></SidebarFooter>
     </Sidebar>
-  );
+  )
 }

@@ -1,21 +1,21 @@
-import { Fragment } from 'react/jsx-runtime';
+import { Fragment } from 'react/jsx-runtime'
 
 export default function Loading() {
   return (
     <Fragment>
-      <div className={'flex items-center justify-center h-[80%]'}>
-        <div className={'flex-col gap-4 w-full flex items-center justify-center'}>
+      <div className={'flex h-[80%] items-center justify-center'}>
+        <div className={'flex w-full flex-col items-center justify-center gap-4'}>
           <div
             className={
-              'w-20 h-20 border-4 border-transparent text-4xl animate-spin flex items-center justify-center border-t-primary rounded-full'
+              'flex h-20 w-20 animate-spin items-center justify-center rounded-full border-4 border-transparent border-t-primary text-4xl'
             }>
             <div
               className={
-                'w-16 h-16 border-4 border-transparent text-2xl animate-spin flex items-center justify-center border-t-muted rounded-full'
+                'flex h-16 w-16 animate-spin items-center justify-center rounded-full border-4 border-transparent border-t-muted text-2xl'
               }></div>
           </div>
         </div>
       </div>
     </Fragment>
-  );
+  )
 }
