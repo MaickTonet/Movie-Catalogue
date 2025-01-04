@@ -5,18 +5,19 @@ import { Link } from 'react-router-dom'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel'
 
 export default function MovieCarousel({ genre, type }: { genre: Genre; type: 'movie' | 'serie' }) {
-  const { moviesByGenre, seriesByGenre } = useGenreQuery(genre.id)
+  const { moviesByGenre, seriesByGenre, isLoading } = useGenreQuery(genre.id)
+
+  let movies: Movie[] = []
+  if (type === 'movie') movies = moviesByGenre
+  if (type === 'serie') movies = seriesByGenre
+
   const options = {
     slidesToScroll: 4,
     dragFree: false,
     dragThreshold: 80,
   }
 
-  let movies: Movie[] = []
-
-  if (type === 'movie') movies = moviesByGenre
-
-  if (type === 'serie') movies = seriesByGenre
+  if (isLoading) return null
 
   return (
     <section className={'flex w-[90%] flex-col gap-4'}>

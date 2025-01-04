@@ -7,10 +7,10 @@ export default function MovieTabs({ movieGenres, seriesGenres }: { movieGenres: 
     <article>
       <Tabs defaultValue='movie' className='space-y-6'>
         <TabsList className={'ml-[5%] space-x-2 bg-transparent'}>
-          <TabsTrigger value='movie' className={'data-[state=active]:bg-primary'}>
+          <TabsTrigger value='movie' className={'hover:text-foreground data-[state=active]:bg-primary'}>
             Filmes
           </TabsTrigger>
-          <TabsTrigger value='serie' className={'data-[state=active]:bg-primary'}>
+          <TabsTrigger value='serie' className={'hover:text-foreground data-[state=active]:bg-primary'}>
             Series
           </TabsTrigger>
         </TabsList>
