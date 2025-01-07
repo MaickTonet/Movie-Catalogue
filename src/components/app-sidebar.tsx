@@ -13,14 +13,32 @@ import {
 import { useGenreQuery } from '@/hooks/use-genre-query'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@radix-ui/react-collapsible'
 import { ChartBarStacked, ChevronDown, Clapperboard, Search, Star, Tv } from 'lucide-react'
+import { memo } from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from './theme-provider'
 import { ScrollArea } from './ui/scroll-area'
 
-export function AppSidebar() {
+const GenreList = memo(function GenreList({ genres }: { genres: Array<{ id: number; name: string }> }) {
+  return (
+    <SidebarMenu className={'flex px-[10%]'}>
+      {genres.map((genre) => (
+        <SidebarMenuItem key={genre.id}>
+          <SidebarMenuButton asChild>
+            <button>{genre.name}</button>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      ))}
+    </SidebarMenu>
+  )
+})
+
+// Componente principal memorizado
+export const AppSidebar = memo(function AppSidebar() {
   const { theme } = useTheme()
   const { movieGenres } = useGenreQuery()
   const { seriesGenres } = useGenreQuery()
+
+  console.log('rendering component')
 
   return (
     <Sidebar className={'border-r-border/20 shadow'}>
@@ -88,15 +106,7 @@ export function AppSidebar() {
                     </SidebarGroupLabel>
                     <CollapsibleContent>
                       <SidebarGroupContent className={'mt-2'}>
-                        <SidebarMenu className={'flex px-[10%]'}>
-                          {movieGenres.map((genre) => (
-                            <SidebarMenuItem key={genre.id}>
-                              <SidebarMenuButton asChild>
-                                <button>{genre.name}</button>
-                              </SidebarMenuButton>
-                            </SidebarMenuItem>
-                          ))}
-                        </SidebarMenu>
+                        <GenreList genres={movieGenres} />
                       </SidebarGroupContent>
                     </CollapsibleContent>
                   </SidebarGroup>
@@ -116,15 +126,7 @@ export function AppSidebar() {
                     </SidebarGroupLabel>
                     <CollapsibleContent>
                       <SidebarGroupContent className={'mt-2'}>
-                        <SidebarMenu className={'flex px-[10%]'}>
-                          {seriesGenres.map((genre) => (
-                            <SidebarMenuItem key={genre.id}>
-                              <SidebarMenuButton asChild>
-                                <button>{genre.name}</button>
-                              </SidebarMenuButton>
-                            </SidebarMenuItem>
-                          ))}
-                        </SidebarMenu>
+                        <GenreList genres={seriesGenres} />
                       </SidebarGroupContent>
                     </CollapsibleContent>
                   </SidebarGroup>
@@ -138,4 +140,4 @@ export function AppSidebar() {
       <SidebarFooter></SidebarFooter>
     </Sidebar>
   )
-}
+})

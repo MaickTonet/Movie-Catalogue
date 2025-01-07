@@ -9,16 +9,14 @@ export default function MovieView() {
   const { id } = useParams()
   const { data: movie, isLoading } = useMovie(parseInt(id as string))
 
-  if (isLoading) {
-    return <Loading />
-  }
+  if (isLoading) return <Loading />
 
   return (
     <main>
       <Helmet>
         <title>{movie?.title} - Movie Catalogue</title>
       </Helmet>
-      {movie && <BreadcrumbPath movie={movie} />}
+      {movie && <BreadcrumbPath path={movie.title} search={false} />}
       {movie && <MovieOverview movie={movie} />}
     </main>
   )

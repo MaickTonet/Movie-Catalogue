@@ -4,6 +4,7 @@ import { Play } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Button } from './ui/button'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel'
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function TrendingMovies({ trendingMovies }: { trendingMovies: Movie[] }) {
   return (
@@ -15,7 +16,7 @@ export default function TrendingMovies({ trendingMovies }: { trendingMovies: Mov
               key={movie.id}
               className={'flex w-full flex-col items-center justify-center gap-2 lg:flex-row lg:gap-6'}>
               <div>
-                <img
+                <LazyLoadImage
                   src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                   alt={movie.title}
                   className={'h-[300px] rounded-md object-cover sm:h-[350px]'}

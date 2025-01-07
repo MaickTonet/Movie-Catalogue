@@ -1,6 +1,7 @@
 import { useGenreQuery } from '@/hooks/use-genre-query'
 import { Genre } from '@/types/genreTypes'
 import { Movie } from '@/types/movieTypes'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Link } from 'react-router-dom'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel'
 
@@ -32,7 +33,7 @@ export default function MovieCarousel({ genre, type }: { genre: Genre; type: 'mo
           {movies?.map((movie) => (
             <CarouselItem key={movie.id} className={'max-w-[200px] basis-1/2 sm:basis-1/4 md:basis-1/5 lg:basis-1/6'}>
               <Link to={`/movie/${movie.id}`}>
-                <img
+                <LazyLoadImage
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.title}
                   className={
