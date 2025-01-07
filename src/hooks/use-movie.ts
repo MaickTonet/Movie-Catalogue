@@ -36,3 +36,5 @@ export const useSearchMovie = (search: string | null) => {
     enabled: !!search,
   })
 }
+
+

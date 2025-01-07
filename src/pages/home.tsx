@@ -9,9 +9,7 @@ export default function Home() {
   const { data: trendingMovies, isLoading } = useTrendingMovies()
   const { movieGenres, seriesGenres } = useGenreQuery()
 
-  if (isLoading) {
-    return <Loading />
-  }
+  if (isLoading) return <Loading />
 
   //TODO: ajust search field
   //TODO: helmet it is not updating correctly when switching pages.
