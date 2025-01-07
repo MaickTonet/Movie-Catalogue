@@ -38,8 +38,6 @@ export const AppSidebar = memo(function AppSidebar() {
   const { movieGenres } = useGenreQuery()
   const { seriesGenres } = useGenreQuery()
 
-  console.log('rendering component')
-
   return (
     <Sidebar className={'border-r-border/20 shadow'}>
       <SidebarHeader>
