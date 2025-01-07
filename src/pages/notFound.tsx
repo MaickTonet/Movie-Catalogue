@@ -1,17 +1,20 @@
+import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
 
 export default function NotFound() {
   return (
-    <main className={'flex h-[80%] flex-col items-center justify-center gap-2'}>
+    <main className={'flex h-[80%] flex-col items-center justify-center '}>
       <img
-        src={'https://cdn-icons-png.flaticon.com/512/4923/4923785.png'}
+        src={
+          'https://cdni.iconscout.com/illustration/premium/thumb/error-404-illustration-download-in-svg-png-gif-file-formats--not-found-page-webpage-pack-design-development-illustrations-5501655.png'
+        }
         alt={'Imagem de página não encontrada'}
         draggable={false}
         className={'w-[40%] max-w-[200px]'}
       />
-      <h2 className={'text-xl font-bold'}>Ops... Essa página não existe</h2>
-      <Link to={'/'} className={'p-2 text-lg font-semibold text-muted-foreground hover:underline'}>
-        Retornar para o início
+      <p className={'text-lg mb-4'}>Ops... Essa página não existe</p>
+      <Link to={'/'}>
+        <Button>Voltar para o início</Button>
       </Link>
     </main>
   )

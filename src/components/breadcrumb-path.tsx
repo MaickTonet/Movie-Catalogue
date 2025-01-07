@@ -1,4 +1,4 @@
-import { Movie } from '@/types/movieTypes'
+import { Fragment } from 'react/jsx-runtime'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,7 +8,7 @@ import {
   BreadcrumbSeparator,
 } from './ui/breadcrumb'
 
-export default function BreadcrumbPath({ movie }: { movie: Movie }) {
+export default function BreadcrumbPath({ search, path }: { search: boolean; path: string | null }) {
   return (
     <Breadcrumb className={'mb-6 p-4'}>
       <BreadcrumbList>
@@ -18,8 +18,14 @@ export default function BreadcrumbPath({ movie }: { movie: Movie }) {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
+        {search && (
+          <Fragment>
+            <BreadcrumbItem>Buscar</BreadcrumbItem>
+            <BreadcrumbSeparator />
+          </Fragment>
+        )}
         <BreadcrumbItem>
-          <BreadcrumbPage className={'max-w-28 truncate sm:max-w-sm'}>{movie.title}</BreadcrumbPage>
+          <BreadcrumbPage className={'max-w-28 truncate sm:max-w-sm'}>{path}</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
