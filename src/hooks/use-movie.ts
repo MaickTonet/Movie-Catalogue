@@ -1,6 +1,6 @@
 import { api } from '@/lib/api'
 import { useQuery } from '@tanstack/react-query'
-import { Movie, type MoviesResponse } from '../types/movieTypes'
+import { Movie, type MovieResponse } from '../types/movieTypes'
 
 export const useMovie = (movieId: number) => {
   return useQuery<Movie, Error>({
@@ -26,15 +26,13 @@ export const useTrendingMovies = () => {
 }
 
 export const useSearchMovie = (search: string | null) => {
-  return useQuery<MoviesResponse>({
+  return useQuery<MovieResponse>({
     queryKey: ['searchMovie', search],
     queryFn: async ({ queryKey: [, search] }) => {
-      const response = await api.get<MoviesResponse>(`/search/movie?query=${search}`)
+      const response = await api.get<MovieResponse>(`/search/movie?query=${search}`)
       return response.data
     },
     staleTime: 1000 * 60 * 15,
     enabled: !!search,
   })
 }
-
-

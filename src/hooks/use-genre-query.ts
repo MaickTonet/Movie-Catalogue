@@ -1,5 +1,5 @@
 import { api } from '@/lib/api'
-import { MoviesResponse } from '@/types/movieTypes'
+import { MovieResponse } from '@/types/movieTypes'
 import { useQuery } from '@tanstack/react-query'
 import { GenresResponse } from '../types/genreTypes'
 
@@ -22,20 +22,20 @@ export const useGenreQuery = (genreId?: number) => {
     staleTime: Infinity,
   })
 
-  const moviesByGenreQuery = useQuery<MoviesResponse, Error>({
+  const moviesByGenreQuery = useQuery<MovieResponse, Error>({
     queryKey: ['moviesByGenre', genreId],
     queryFn: async ({ queryKey: [, genreId] }) => {
-      const response = await api.get<MoviesResponse>(`/discover/movie?with_genres=${genreId}`)
+      const response = await api.get<MovieResponse>(`/discover/movie?with_genres=${genreId}`)
       return response.data
     },
     staleTime: 1000 * 60 * 15,
     enabled: !!genreId,
   })
 
-  const seriesByGenreQuery = useQuery<MoviesResponse, Error>({
+  const seriesByGenreQuery = useQuery<MovieResponse, Error>({
     queryKey: ['seriesByGenre', genreId],
     queryFn: async ({ queryKey: [, genreId] }) => {
-      const response = await api.get<MoviesResponse>(`/discover/tv?with_genres=${genreId}`)
+      const response = await api.get<MovieResponse>(`/discover/tv?with_genres=${genreId}`)
       return response.data
     },
     staleTime: 1000 * 60 * 15,

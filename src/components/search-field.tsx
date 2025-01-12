@@ -21,7 +21,7 @@ export default function SearchField() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    navigate(`/buscar?search=${values.search}`)
+    navigate(`/buscar?search=${values.search}&page=1`)
   }
 
   return (

@@ -5,7 +5,7 @@ import Loading from './components/loading'
 import Home from './pages/home'
 
 // TODO: check eslint warnings about lazy loading
-const MovieView = lazy(() => import('./pages/movie-view'))
+const MovieView = lazy(() => import('./pages/movieView'))
 const Search = lazy(() => import('./pages/search'))
 const NotFound = lazy(() => import('./pages/notFound'))
 
