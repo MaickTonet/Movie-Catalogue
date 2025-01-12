@@ -1,10 +1,10 @@
-import { Genre } from './genreTypes';
+import { Genre } from './genreTypes'
 
 export interface Movie {
   id: number
   title: string
   overview: string
-  media_type: 'movie';
+  media_type: 'movie'
   poster_path: string | null
   adult: boolean
   genres: Genre[]
