@@ -5,7 +5,7 @@ export interface Movie {
   title: string
   overview: string
   media_type: 'movie'
-  poster_path: string | null
+  poster_path: string
   adult: boolean
   genres: Genre[]
   popularity: number

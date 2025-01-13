@@ -6,14 +6,14 @@ import { useGenreQuery } from '@/hooks/use-genre-query'
 import { useTrendingMoviesQuery } from '@/hooks/useMovieQuery'
 
 export default function Home() {
-  const { data: trendingMovies, isLoading } = useTrendingMoviesQuery()
+  const { data: trending, isLoading } = useTrendingMoviesQuery()
   const { movieGenres, seriesGenres } = useGenreQuery()
 
   if (isLoading) return <Loading />
 
   return (
     <main className={'flex w-full flex-col space-y-8 py-4'}>
-      {trendingMovies && <TrendingCarouse trending={trendingMovies} />}
+      {trending && <TrendingCarouse trending={trending} />}
       <SearchField />
       <MovieTabs movieGenres={movieGenres} seriesGenres={seriesGenres} />
     </main>
