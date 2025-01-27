@@ -1,5 +1,5 @@
+import type { Person } from '@/types/creditsTypes'
 import type { Movie } from '@/types/movieTypes'
-import type { Person } from '@/types/personTypes'
 import type { TVShow } from '@/types/tvTypes'
 import { Link } from 'react-router-dom'
 import { Fragment } from 'react/jsx-runtime'

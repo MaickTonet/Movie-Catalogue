@@ -1,5 +1,5 @@
+import type { Person } from './creditsTypes'
 import type { Movie } from './movieTypes'
-import type { Person } from './personTypes'
 import type { TVShow } from './tvTypes'
 
 export type SearchResults = Movie | TVShow | Person

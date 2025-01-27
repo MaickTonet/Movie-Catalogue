@@ -9,11 +9,9 @@ import {
 } from '@/components/ui/pagination'
 import { useSearchParams } from 'react-router-dom'
 
-interface PaginationResponseProps {
-  totalPages: number
-}
+// TODO: refactor component and make responsive
 
-export function PaginationResponse({ totalPages }: PaginationResponseProps) {
+export function PaginationResponse({ totalPages }: { totalPages: number }) {
   const [searchParams, setSearchParams] = useSearchParams()
   const currentPage = Number(searchParams.get('page') ?? 1)
 
@@ -25,15 +23,13 @@ export function PaginationResponse({ totalPages }: PaginationResponseProps) {
     })
   }
 
-  // Gera array de páginas a serem mostradas
   const getPageNumbers = () => {
     const pages: number[] = []
     let start = Math.max(1, currentPage - 2)
-    const end = Math.min(totalPages, start + 4)
+    const end = Math.min(totalPages, start + 2)
 
-    // Ajusta o início se estiver próximo ao final
     if (end === totalPages) {
-      start = Math.max(1, end - 4)
+      start = Math.max(1, end - 2)
     }
 
     for (let i = start; i <= end; i++) {

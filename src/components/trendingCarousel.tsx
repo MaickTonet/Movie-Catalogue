@@ -1,4 +1,4 @@
-import { formatDateByYear } from '@/helpers/data-format'
+import { formatDateByYear } from '@/helpers/dataFormat'
 import type { SearchResults } from '@/types/searchTypes'
 import { Play } from 'lucide-react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
