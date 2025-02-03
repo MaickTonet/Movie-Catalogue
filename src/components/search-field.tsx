@@ -17,6 +17,7 @@ import { Search } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { Fragment } from 'react/jsx-runtime'
 import { Button } from './ui/button'
+import { useState } from 'react'
 
 const formSchema = z.object({
   search: z.string().nonempty('Digite algo para pesquisar'),
@@ -24,6 +25,7 @@ const formSchema = z.object({
 
 export default function SearchField() {
   const navigate = useNavigate()
+  const [open, setOpen] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -33,13 +35,14 @@ export default function SearchField() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    setOpen(false);
     navigate(`/buscar?search=${values.search}&page=1`)
   }
 
   return (
     <Fragment>
       {window.innerWidth < 768 ? (
-        <Drawer>
+        <Drawer open={open} onOpenChange={setOpen}>
           <DrawerTrigger>
             <button
               className={
@@ -88,7 +91,7 @@ export default function SearchField() {
           </DrawerContent>
         </Drawer>
       ) : (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger>
             <button
               className={

@@ -40,7 +40,7 @@ export const AppSidebar = memo(function AppSidebar() {
   const { seriesGenres } = useGenreQuery()
 
   return (
-    <Sidebar className={'border-r-border/20 shadow'}>
+    <Sidebar className='border-r-border/20 shadow'>
       <SidebarHeader>
         <Link to={'/'}>
           <img
