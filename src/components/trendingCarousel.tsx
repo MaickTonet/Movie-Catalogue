@@ -1,5 +1,6 @@
 import { formatDateByYear } from '@/helpers/dataFormat'
 import type { SearchResults } from '@/types/searchTypes'
+import Autoplay from 'embla-carousel-autoplay'
 import { Play } from 'lucide-react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Link } from 'react-router-dom'
@@ -9,7 +10,13 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 export default function TrendingCarouse({ trending }: { trending: SearchResults[] }) {
   return (
     <article className={'mt-6 lg:mx-auto lg:max-w-screen-md'}>
-      <Carousel>
+      <Carousel
+        opts={{ loop: true }}
+        plugins={[
+          Autoplay({
+            delay: 8000,
+          }),
+        ]}>
         <CarouselContent>
           {trending.map((item) => (
             <CarouselItem

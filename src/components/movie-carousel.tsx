@@ -12,12 +12,6 @@ export default function MovieCarousel({ genre, type }: { genre: Genre; type: 'mo
   if (type === 'movie') movies = moviesByGenre
   if (type === 'serie') movies = seriesByGenre
 
-  const options = {
-    slidesToScroll: 4,
-    dragFree: false,
-    dragThreshold: 80,
-  }
-
   if (isLoading) return null
 
   return (
@@ -28,7 +22,8 @@ export default function MovieCarousel({ genre, type }: { genre: Genre; type: 'mo
         </div>
         <p className={'cursor-pointer text-muted-foreground hover:underline'}>Ver mais</p>
       </aside>
-      <Carousel opts={options}>
+      <Carousel
+        opts={{ breakpoints: { '(min-width: 768px)': { slidesToScroll: 4 } }, dragFree: false, slidesToScroll: 2 }}>
         <CarouselContent>
           {movies?.map((movie) => (
             <CarouselItem key={movie.id} className={'max-w-[200px] basis-1/2 sm:basis-1/4 md:basis-1/5 lg:basis-1/6'}>

@@ -5,9 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 export default function CastCarousel({ movie }: { movie: Movie }) {
   return (
-    <Carousel
-      className='mt-8 w-full max-w-md lg:ml-12'
-      opts={{ dragFree: window.innerWidth < 1024 ? true : false, slidesToScroll: 3 }}>
+    <Carousel className='mt-8 w-full max-w-md lg:ml-12' opts={{ dragFree: false, slidesToScroll: 2 }}>
       <CarouselContent>
         {movie.credits.cast.map(
           (cast) =>
