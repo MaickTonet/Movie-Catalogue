@@ -12,7 +12,6 @@ export const useMovieQuery = (movieId: number) => {
           append_to_response: 'videos,credits,images,recommendations',
         },
       })
-      console.log(data)
       return data
     },
     enabled: !!movieId,
@@ -24,7 +23,6 @@ export const useTrendingMoviesQuery = () => {
     queryKey: ['trendingMovies'],
     queryFn: async () => {
       const { data } = await api.get<SearchResponse>('/trending/all/week')
-      console.log(data.results)
       return data.results
     },
   })

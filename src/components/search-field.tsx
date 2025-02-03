@@ -14,10 +14,10 @@ import {
 } from '@/components/ui/drawer'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Search } from 'lucide-react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Fragment } from 'react/jsx-runtime'
 import { Button } from './ui/button'
-import { useState } from 'react'
 
 const formSchema = z.object({
   search: z.string().nonempty('Digite algo para pesquisar'),
@@ -35,7 +35,7 @@ export default function SearchField() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    setOpen(false);
+    setOpen(false)
     navigate(`/buscar?search=${values.search}&page=1`)
   }
 

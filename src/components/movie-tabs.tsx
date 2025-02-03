@@ -1,5 +1,5 @@
 import { Genre } from '@/types/genreTypes'
-import MovieCarousel from './movie-carousel'
+import MovieCarousel from './movieCarousel'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
 
 export default function MovieTabs({ movieGenres, seriesGenres }: { movieGenres: Genre[]; seriesGenres: Genre[] }) {
