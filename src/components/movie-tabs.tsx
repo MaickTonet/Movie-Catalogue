@@ -1,4 +1,5 @@
-import { useGenreQuery, useMovieByGenreListQuery, useSerieByGenreListQuery } from '@/hooks/useGenreQuery'
+import { useGenreQuery } from '@/hooks/useGenreQuery'
+import { useMovieByGenreListQuery, useSerieByGenreListQuery } from '@/hooks/useMediaByGenreListQuery'
 import MovieCarousel from './movieCarousel'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
 
