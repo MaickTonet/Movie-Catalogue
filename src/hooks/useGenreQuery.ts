@@ -1,7 +1,8 @@
 import { api } from '@/lib/api'
 import { MovieResponse } from '@/types/movieTypes'
-import { useQuery } from '@tanstack/react-query'
-import { GenresResponse } from '../types/genreTypes'
+import type { TVShowResponse } from '@/types/tvTypes'
+import { useQueries, useQuery } from '@tanstack/react-query'
+import { GenresResponse, type Genre } from '../types/genreTypes'
 
 export const useGenreQuery = (genreId?: number) => {
   const movieGenreQuery = useQuery<GenresResponse>({
@@ -78,4 +79,80 @@ export const useSeriesGenreList = () => {
     },
     staleTime: Infinity,
   })
+}
+
+export const useMoviesByGenreQuery = (genreId: number) => {
+  return useQuery<MovieResponse, Error>({
+    queryKey: ['moviesByGenre', genreId],
+    queryFn: async ({ queryKey: [genreId] }) => {
+      const response = await api.get<MovieResponse>(`/discover/movie?with_genres=${genreId}`)
+      return response.data
+    },
+    staleTime: 1000 * 60 * 15,
+  })
+}
+
+export const useSeriesByGenreQuery = (genreId: number) => {
+  return useQuery<MovieResponse, Error>({
+    queryKey: ['seriesByGenre', genreId],
+    queryFn: async ({ queryKey: [genreId] }) => {
+      const response = await api.get<MovieResponse>(`/discover/tv?with_genres=${genreId}`)
+      return response.data
+    },
+    staleTime: 1000 * 60 * 15,
+  })
+}
+
+export const useMovieByGenreListQuery = (genres: Genre[]) => {
+  const movieQueries = useQueries({
+    queries: (genres ?? []).map((genre) => ({
+      queryKey: ['movies', genre.id],
+      queryFn: async () => {
+        const { data } = await api.get<MovieResponse>('/discover/movie', {
+          params: {
+            with_genres: genre.id,
+            sort_by: 'popularity.desc',
+            page: 1,
+          },
+        })
+        return {
+          genreId: genre.id,
+          genreName: genre.name,
+          movies: data.results,
+        }
+      },
+      enabled: !!genres,
+    })),
+  })
+
+  return {
+    moviesByGenre: movieQueries,
+  }
+}
+
+export const useSerieByGenreListQuery = (genres: Genre[]) => {
+  const serieQueries = useQueries({
+    queries: (genres ?? []).map((genre) => ({
+      queryKey: ['series', genre.id],
+      queryFn: async () => {
+        const { data } = await api.get<TVShowResponse>('/discover/tv', {
+          params: {
+            with_genres: genre.id,
+            sort_by: 'popularity.desc',
+            page: 1,
+          },
+        })
+        return {
+          genreId: genre.id,
+          genreName: genre.name,
+          series: data.results,
+        }
+      },
+      enabled: !!genres,
+    })),
+  })
+
+  return {
+    seriesByGenre: serieQueries,
+  }
 }

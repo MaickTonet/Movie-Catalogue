@@ -30,13 +30,13 @@ export default function SearchResponseList({ search, searchResults, totalRegiste
 
   return (
     <Fragment>
-      <div className='mb-8 hidden items-center justify-between px-[5%] md:flex'>
+      <div className='mb-8 hidden items-center justify-between px-4 md:flex'>
         <h2 className={'text-xl font-semibold'}>Resultados da busca por: "{search}"</h2>
         <p className={'text-muted'}>{totalRegisters} Registros encontrados</p>
       </div>
-      <aside className={'flex flex-wrap justify-center gap-4 px-2'}>
+      <aside className={'grid grid-cols-2 gap-3 px-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'}>
         {searchResults.map((result) => (
-          <MoviePreview key={result.id} item={result} />
+          <MoviePreview item={result} showTitle={true} />
         ))}
       </aside>
     </Fragment>

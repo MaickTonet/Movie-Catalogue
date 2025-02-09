@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
-import { useGenreQuery } from '@/hooks/use-genre-query'
+import { useGenreQuery } from '@/hooks/useGenreQuery'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@radix-ui/react-collapsible'
 import { ChartBarStacked, ChevronDown, Clapperboard, Star, Tv } from 'lucide-react'
 import { memo } from 'react'
