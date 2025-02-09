@@ -6,10 +6,11 @@ import GenderBadgesList from './genderBadgesList'
 import MovieGeneralInfo from './movieGeneralInfo'
 import MovieImagesDialog from './movieImagesDialog'
 import ProductionCompaniesView from './productionCompaniesView'
+import MovieCarousel from './movieCarousel'
 
 export default function MovieOverview({ movie }: { movie: Movie }) {
   return (
-    <section className={`relative flex flex-col items-center justify-center space-y-3 md:flex-row md:items-start`}>
+    <section className={`relative flex flex-col flex-wrap items-center justify-center space-y-3 md:flex-row md:items-start pb-12`}>
       <aside className='flex flex-col items-center space-y-3 pb-3'>
         <MovieImagesDialog movie={movie} />
         <div className='flex w-[80%] flex-col items-center justify-center space-y-2'>
@@ -26,6 +27,7 @@ export default function MovieOverview({ movie }: { movie: Movie }) {
         <CollectionView movie={movie} />
         <ProductionCompaniesView movie={movie} />
       </aside>
+      <MovieCarousel items={movie.recommendations.results} title={'Recomendados'} mediaType={'movie'}  />
     </section>
   )
 }
