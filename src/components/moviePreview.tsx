@@ -1,7 +1,7 @@
-import { formatDateByYear } from '@/helpers/dataFormat'
 import type { Person } from '@/types/creditsTypes'
 import type { Movie } from '@/types/movieTypes'
 import type { TVShow } from '@/types/tvTypes'
+import { formatDateByYear } from '@/utils/dataFormat'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Link } from 'react-router-dom'
 

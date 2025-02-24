@@ -1,5 +1,5 @@
-import { formatDateByYear } from '@/helpers/dataFormat'
 import type { SearchResults } from '@/types/searchTypes'
+import { formatDateByYear } from '@/utils/dataFormat'
 import Autoplay from 'embla-carousel-autoplay'
 import { Play } from 'lucide-react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'

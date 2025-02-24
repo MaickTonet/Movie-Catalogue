@@ -1,5 +1,5 @@
-import { formatDateByYear, formatMovieRunTime } from '@/helpers/dataFormat'
 import { Movie } from '@/types/movieTypes'
+import { formatDateByYear, formatMovieRunTime } from '@/utils/dataFormat'
 import CastCarousel from './castCarousel'
 import GenderBadgesList from './genderBadgesList'
 import MovieCarousel from './movieCarousel'

@@ -1,5 +1,5 @@
-import { formatMoneyValues } from '@/helpers/dataFormat'
 import type { Movie } from '@/types/movieTypes'
+import { formatMoneyValues } from '@/utils/dataFormat'
 import { CircleDollarSign, Clapperboard, DollarSign } from 'lucide-react'
 import { Fragment } from 'react'
 
