@@ -13,13 +13,12 @@ import {
 import { useGenreQuery } from '@/hooks/useGenreQuery'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@radix-ui/react-collapsible'
 import { ChartBarStacked, ChevronDown, Clapperboard, Star, Tv } from 'lucide-react'
-import { memo } from 'react'
 import { Link } from 'react-router-dom'
 import SearchField from './search-field'
 import { useTheme } from './theme-provider'
 import { ScrollArea } from './ui/scroll-area'
 
-const GenreList = memo(function GenreList({ genres }: { genres: Array<{ id: number; name: string }> }) {
+const GenreList = function GenreList({ genres }: { genres: Array<{ id: number; name: string }> }) {
   return (
     <SidebarMenu className={'flex px-[10%]'}>
       {genres.map((genre) => (
@@ -31,10 +30,10 @@ const GenreList = memo(function GenreList({ genres }: { genres: Array<{ id: numb
       ))}
     </SidebarMenu>
   )
-})
+}
 
 // Componente principal memorizado
-export const AppSidebar = memo(function AppSidebar() {
+export const AppSidebar = function AppSidebar() {
   const { theme } = useTheme()
   const { movieGenres } = useGenreQuery()
   const { seriesGenres } = useGenreQuery()
@@ -133,4 +132,4 @@ export const AppSidebar = memo(function AppSidebar() {
       <SidebarFooter></SidebarFooter>
     </Sidebar>
   )
-})
+}
